@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Screener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        td.green {
+            color: #008000;
+            font-weight: bold;
+        }
+        td.red {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        td.percent {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h2>Crypto Screener</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Network</th>
+                <th>Spread (%)</th>
+                <th>MEXC Bid</th>
+                <th>MEXC Ask</th>
+                <th>Bybit Bid</th>
+                <th>Bybit Ask</th>
+                <th>MEXC Funding</th>
+                <th>Bybit Funding</th>
+                <th>Last Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>BTC</td>
+                <td>BTC</td>
+                <td class="green">0.0040%</td>
+                <td>96931.99</td>
+                <td>96932.00</td>
+                <td>96935.90</td>
+                <td>96936.00</td>
+                <td class="percent">%</td>
+                <td class="percent">%</td>
+                <td>2025-02-09 06:43:21</td>
+            </tr>
+            <tr>
+                <td>ETH</td>
+                <td>ERC20</td>
+                <td class="green">0.0049%</td>
+                <td>2659.22</td>
+                <td>2659.23</td>
+                <td>2659.08</td>
+                <td>2659.09</td>
+                <td class="percent">%</td>
+                <td class="percent">%</td>
+                <td>2025-02-09 06:43:24</td>
+            </tr>
+            <tr>
+                <td>BNB</td>
+                <td>BEP20</td>
+                <td class="green">0.0358%</td>
+                <td>615.07</td>
+                <td>615.08</td>
+                <td>615.30</td>
+                <td>615.40</td>
+                <td class="percent">%</td>
+                <td class="percent">%</td>
+                <td>2025-02-09 06:43:18</td>
+            </tr>
+            <tr>
+                <td>XRP</td>
+                <td>XRP</td>
+                <td class="red">-0.0130%</td>
+                <td>2.4620</td>
+                <td>2.4621</td>
+                <td>2.4623</td>
+                <td>2.4623</td>
+                <td class="percent">%</td>
+                <td class="percent">%</td>
+                <td>2025-02-09 06:43:19</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
