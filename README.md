@@ -322,6 +322,7 @@ MIT License - подробности в файле LICENSE.
 **Pavel Auchai (pauchai)**
 
 [![GitHub](https://img.shields.io/badge/GitHub-pauchai-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pauchai)
+[![Telegram](https://img.shields.io/badge/Telegram-@monepauk-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/monepauk)
 [![Email](https://img.shields.io/badge/Email-pauchai%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pauchai@gmail.com)
 
 ### 🔗 Полезные ссылки
@@ -329,6 +330,11 @@ MIT License - подробности в файле LICENSE.
 [![Original Repo](https://img.shields.io/badge/Original_Repo-monarch--up/spread__screener-000000?style=for-the-badge&logo=github)](https://github.com/monarch-up/spread_screener)
 [![Issues](https://img.shields.io/badge/Report_Issue-Bug_Report-red?style=for-the-badge&logo=github)](https://github.com/monarch-up/spread_screener/issues)
 [![Pull Request](https://img.shields.io/badge/Pull_Request-Contribute-green?style=for-the-badge&logo=github)](https://github.com/monarch-up/spread_screener/pulls)
+
+### 🛡️ Другие полезные проекты
+
+[![VPN Service](https://img.shields.io/badge/VPN_Service-Bot-007ACC?style=for-the-badge&logo=vpn&logoColor=white)](https://github.com/vpn-service-bot/)
+*Полезный VPN сервис для безопасного интернета*
 
 ### 🌟 Поддержка проекта
 
