@@ -1,5 +1,6 @@
 # 📊 Скринер Спредов для MEXC и Bybit Spot
 
+
 Веб-приложение для мониторинга арби## 📸 Интерфейс приложения
 
 ### Главный дашборд
@@ -311,11 +312,42 @@ SYMBOLS_TO_MONITOR = [
 
 MIT License - подробности в файле LICENSE.
 
-## 🤝 Контакты
+---
 
-- GitHub: [@monarch-up](https://github.com/monarch-up)
-- Issues: [Сообщить о проблеме](https://github.com/monarch-up/spread_screener/issues)
+<div align="center">
+
+## 🤝 Контакты и Поддержка
+
+### 👨‍💻 Разработчик
+**Pavel Auchai (pauchai)**
+
+[![GitHub](https://img.shields.io/badge/GitHub-pauchai-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pauchai)
+[![Email](https://img.shields.io/badge/Email-pauchai%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pauchai@gmail.com)
+
+### 🔗 Полезные ссылки
+
+[![Original Repo](https://img.shields.io/badge/Original_Repo-monarch--up/spread__screener-000000?style=for-the-badge&logo=github)](https://github.com/monarch-up/spread_screener)
+[![Issues](https://img.shields.io/badge/Report_Issue-Bug_Report-red?style=for-the-badge&logo=github)](https://github.com/monarch-up/spread_screener/issues)
+[![Pull Request](https://img.shields.io/badge/Pull_Request-Contribute-green?style=for-the-badge&logo=github)](https://github.com/monarch-up/spread_screener/pulls)
+
+### 🌟 Поддержка проекта
+
+Если проект оказался полезным:
+- ⭐ Поставьте звезду на GitHub
+- 🐛 Сообщайте о багах в Issues
+- 💡 Предлагайте новые функции
+- 🔧 Участвуйте в разработке через Pull Requests
 
 ---
 
-**Удачной торговли! 🚀**
+### ⚠️ Отказ от ответственности
+
+Данное приложение предназначено **только для информационных целей**. Торговля криптовалютами связана с высокими рисками. Разработчики не несут ответственности за любые финансовые потери, которые могут возникнуть в результате использования данного программного обеспечения.
+
+---
+
+<h3>🚀 Удачной торговли!</h3>
+
+*Made with ❤️ for the crypto community*
+
+</div>
