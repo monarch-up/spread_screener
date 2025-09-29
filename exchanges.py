@@ -24,12 +24,11 @@ async def fetch_mexc_data() -> List[dict]:
         if response.status_code == 200:
             json_data = response.json()
             result = []
-            # Предполагается, что данные находятся в поле "data"
-            for item in json_data.get("data", []):
-                # Нормализуем символ: например, "BTC_USDT" → "BTCUSDT"
+            # Новый API v3 возвращает список напрямую, а не в поле "data"
+            for item in json_data:
                 symbol = item.get("symbol", "").replace("_", "")
                 try:
-                    bid = float(item.get("bid", 0))
+                    bid = float(item.get("bidPrice", 0))
                 except Exception:
                     bid = 0.0
                 result.append({"symbol": symbol, "bid": bid})
@@ -47,11 +46,13 @@ async def fetch_bybit_data() -> List[dict]:
         if response.status_code == 200:
             json_data = response.json()
             result = []
-            # Предполагается, что данные находятся в поле "result"
-            for item in json_data.get("result", []) or []:
+            # Новый API v5 возвращает данные в result.list
+            data = json_data.get("result", {})
+            tickers = data.get("list", [])
+            for item in tickers:
                 symbol = item.get("symbol", "")
                 try:
-                    ask = float(item.get("askPrice", 0))
+                    ask = float(item.get("ask1Price", 0))
                 except Exception:
                     ask = 0.0
                 result.append({"symbol": symbol, "ask": ask})

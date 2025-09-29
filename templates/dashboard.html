@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Screener</title>
+    <title>Скринер Спредов MEXC vs Bybit</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,10 +41,140 @@
         td.percent {
             color: #ff0000;
         }
+        .loading {
+            color: #999;
+            font-style: italic;
+        }
+        .auto-refresh {
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #666;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .timer-display {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .refresh-controls {
+            margin-left: 15px;
+        }
+        .refresh-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .refresh-btn:hover {
+            background-color: #218838;
+        }
     </style>
+    <script>
+        let refreshInterval = 30; // секунды
+        let countdown = refreshInterval;
+        let isAutoRefresh = true;
+        let countdownTimer;
+        let refreshTimer;
+
+        function updateCountdown() {
+            const timerElement = document.getElementById('countdown');
+            if (timerElement) {
+                timerElement.textContent = countdown;
+            }
+            
+            if (countdown <= 0) {
+                if (isAutoRefresh) {
+                    location.reload();
+                } else {
+                    countdown = refreshInterval;
+                }
+            } else {
+                countdown--;
+            }
+        }
+
+        function startAutoRefresh() {
+            // Запускаем таймер обратного отсчета каждую секунду
+            countdownTimer = setInterval(updateCountdown, 1000);
+        }
+
+        function toggleAutoRefresh() {
+            isAutoRefresh = !isAutoRefresh;
+            const toggleBtn = document.getElementById('toggleBtn');
+            const statusElement = document.getElementById('refresh-status');
+            
+            if (isAutoRefresh) {
+                toggleBtn.textContent = 'Выключить';
+                toggleBtn.style.backgroundColor = '#dc3545';
+                statusElement.textContent = 'ВКЛ';
+                statusElement.style.color = '#28a745';
+                countdown = refreshInterval;
+            } else {
+                toggleBtn.textContent = 'Включить';
+                toggleBtn.style.backgroundColor = '#28a745';
+                statusElement.textContent = 'ВЫКЛ';
+                statusElement.style.color = '#dc3545';
+            }
+        }
+
+        function manualRefresh() {
+            countdown = refreshInterval;
+            location.reload();
+        }
+
+        function changeInterval(seconds) {
+            refreshInterval = seconds;
+            countdown = refreshInterval;
+            
+            // Обновляем активную кнопку
+            document.querySelectorAll('.interval-btn').forEach(btn => {
+                btn.style.backgroundColor = '#6c757d';
+            });
+            document.getElementById('btn-' + seconds).style.backgroundColor = '#007bff';
+        }
+
+        // Запускаем при загрузке страницы
+        window.onload = function() {
+            startAutoRefresh();
+            
+            // Устанавливаем активную кнопку интервала
+            document.getElementById('btn-30').style.backgroundColor = '#007bff';
+        };
+    </script>
 </head>
 <body>
-    <h2>Crypto Screener</h2>
+    <h2>Скринер Спредов MEXC vs Bybit</h2>
+    <div class="auto-refresh">
+        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div>
+                ⏱️ Автообновление: <span id="refresh-status" class="timer-display">ВКЛ</span> | 
+                Следующее обновление через: <span id="countdown" class="timer-display">30</span> сек
+            </div>
+            <div class="refresh-controls">
+                <button id="toggleBtn" class="refresh-btn" onclick="toggleAutoRefresh()" style="background-color: #dc3545;">
+                    Выключить
+                </button>
+                <button class="refresh-btn" onclick="manualRefresh()">
+                    Обновить сейчас
+                </button>
+            </div>
+            <div>
+                Интервал: 
+                <button id="btn-15" class="refresh-btn interval-btn" onclick="changeInterval(15)" style="background-color: #6c757d;">15с</button>
+                <button id="btn-30" class="refresh-btn interval-btn" onclick="changeInterval(30)" style="background-color: #6c757d;">30с</button>
+                <button id="btn-60" class="refresh-btn interval-btn" onclick="changeInterval(60)" style="background-color: #6c757d;">60с</button>
+            </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 11px;">
+            📊 Отслеживается: {{ data|length if data else 0 }} торговых пар | 
+            🔄 Данные обновляются с бирж каждые 10 секунд
+        </div>
+    </div>
     <table>
         <thead>
             <tr>
@@ -61,54 +191,42 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>BTC</td>
-                <td>BTC</td>
-                <td class="green">0.0040%</td>
-                <td>96931.99</td>
-                <td>96932.00</td>
-                <td>96935.90</td>
-                <td>96936.00</td>
-                <td class="percent">%</td>
-                <td class="percent">%</td>
-                <td>2025-02-09 06:43:21</td>
-            </tr>
-            <tr>
-                <td>ETH</td>
-                <td>ERC20</td>
-                <td class="green">0.0049%</td>
-                <td>2659.22</td>
-                <td>2659.23</td>
-                <td>2659.08</td>
-                <td>2659.09</td>
-                <td class="percent">%</td>
-                <td class="percent">%</td>
-                <td>2025-02-09 06:43:24</td>
-            </tr>
-            <tr>
-                <td>BNB</td>
-                <td>BEP20</td>
-                <td class="green">0.0358%</td>
-                <td>615.07</td>
-                <td>615.08</td>
-                <td>615.30</td>
-                <td>615.40</td>
-                <td class="percent">%</td>
-                <td class="percent">%</td>
-                <td>2025-02-09 06:43:18</td>
-            </tr>
-            <tr>
-                <td>XRP</td>
-                <td>XRP</td>
-                <td class="red">-0.0130%</td>
-                <td>2.4620</td>
-                <td>2.4621</td>
-                <td>2.4623</td>
-                <td>2.4623</td>
-                <td class="percent">%</td>
-                <td class="percent">%</td>
-                <td>2025-02-09 06:43:19</td>
-            </tr>
+            {% if data %}
+                {% for instrument in data %}
+                <tr>
+                    <td>{{ instrument.symbol }}</td>
+                    <td>{{ instrument.symbol.replace('USDT', '') }}</td>
+                    <td class="{% if instrument.spread > 0 %}green{% else %}red{% endif %}">
+                        {{ "%.4f"|format(instrument.spread) }}%
+                    </td>
+                    <td>{{ "%.2f"|format(instrument.mexc_bid) }}</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>{{ "%.2f"|format(instrument.bybit_ask) }}</td>
+                    <td class="percent">
+                        {% if instrument.mexc_funding %}
+                            {{ "%.4f"|format(instrument.mexc_funding * 100) }}%
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td class="percent">
+                        {% if instrument.bybit_funding %}
+                            {{ "%.4f"|format(instrument.bybit_funding * 100) }}%
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>Real-time</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="10" style="text-align: center; color: #999;">
+                        Загрузка данных... Убедитесь, что сервер запущен и API бирж доступны.
+                    </td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 </body>

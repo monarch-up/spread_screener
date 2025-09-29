@@ -15,6 +15,7 @@ from exchanges import (
     fetch_mexc_data, fetch_bybit_data,
     fetch_mexc_funding, fetch_bybit_funding
 )
+from config import SYMBOLS_TO_MONITOR
 
 # Глобальное хранилище актуальных данных по инструментам
 instruments_data: Dict[str, Instrument] = {}
@@ -38,6 +39,11 @@ async def update_data():
 
             for mexc_item in mexc_data:
                 symbol = mexc_item["symbol"]
+                
+                # Фильтруем только символы из конфигурации
+                if symbol not in SYMBOLS_TO_MONITOR:
+                    continue
+                    
                 mexc_bid = mexc_item["bid"]
 
                 # Ищем совпадение символа в данных Bybit
